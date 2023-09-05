@@ -6,16 +6,17 @@ const Token = sequelize.define('Token', {
 
   id: {
     primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
     type: DataTypes.INTEGER
   },
   refreshToken: {
     type: DataTypes.STRING,
     allowNull: false
   }
+}, {
+  freezeTableName: true,
+  timestamps: false
 });
-
-Token.hasOne(User, { foreignKey: 'id', foreignKeyConstraint: true })
-
-
 
 module.exports = { Token }

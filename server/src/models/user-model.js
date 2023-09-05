@@ -5,7 +5,9 @@ const User = sequelize.define('User', {
   // Model attributes are defined here
   id: {
     primaryKey: true,
-    type: DataTypes.INTEGER
+    autoIncrement: true,
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
   email: {
     type: DataTypes.STRING,
@@ -23,6 +25,9 @@ const User = sequelize.define('User', {
   activationLink: {
     type: DataTypes.STRING,
   }
+}, {
+  freezeTableName: true,
+  timestamps: false
 });
 
 

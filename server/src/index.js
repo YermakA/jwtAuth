@@ -6,15 +6,20 @@ const app = express()
 const db = require("./database/createDB")
 const { User } = require("./models/user-model")
 const { Token } = require("./models/token-model")
-
+const router = require("./routes/index")
 const start = () => {
   try {
     User.sync({ force: true })
     Token.sync({ force: true })
 
+
+
+
+
     app.use(express.json())
     app.use(cookieParser())
     app.use(cors())
+    app.use("/api", router)
 
     const PORT = process.env.PORT || 5000
     app.listen(PORT, () => {
